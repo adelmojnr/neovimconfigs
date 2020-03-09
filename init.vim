@@ -1,5 +1,12 @@
 call plug#begin('~/.config/nvim/plugged')
-
+    Plug 'jparise/vim-graphql',
+    Plug 'Chiel92/vim-autoformat'
+    Plug 'Yggdroot/indentLine'   
+    Plug 'xolox/vim-session'
+    Plug 'xolox/vim-misc'
+    Plug 'matze/vim-move'    
+    Plug 'junegunn/fzf', {  'dir': '~/.fzf','do': './install --all' }
+    Plug 'junegunn/fzf.vim'
     Plug 'Yggdroot/indentLine'
     Plug 'benmills/vimux'
     Plug 'terryma/vim-multiple-cursors' 
@@ -18,7 +25,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'plytophogy/vim-virtualenv'
     Plug 'StanAngeloff/php.vim'
     Plug 'w0rp/ale'
-
 call plug#end()
 
 syntax on
@@ -33,7 +39,16 @@ set expandtab
 set hidden
 set noswapfile
 set number
-set clipboard+=unnamedplus
+set clipboard=unnamedplus
+let g:vsession_path = '~/.config/nvim/plugged/vsession'
+set timeoutlen=1000
+set ttimeoutlen=0
+
+" vim-autoformat
+nnoremap <F3> :Autoformat<CR>
+
+" fzf
+set rtp+=~/.fzf
 
 " NERTree
 map <C-\> :NERDTreeToggle<CR>
@@ -48,6 +63,11 @@ let mapleader="\<space>"
 nnoremap <leader>ss :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>rr :so $MYVIMRC<cr>
 nnoremap <leader>pi :PlugInstall<cr>
+nnoremap <leader>so :OpenSession<CR> 
+nnoremap <leader>SS :SaveSession<CR> 
+nnoremap <leader>sd :DeleteSession<CR>
+nnoremap <leader>sc :CloseSession<CR>
+nnoremap <C-d> :bprev<CR>
 nnoremap <C-d> :bprev<CR>
 nnoremap <C-f> :bnext<CR>
 nnoremap <C-q> :q! <CR>
